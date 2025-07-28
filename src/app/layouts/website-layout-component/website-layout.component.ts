@@ -18,7 +18,7 @@ export class WebsiteLayoutComponent {
   constructor(public router: Router) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        this.isOpen = false;
+        // this.isOpen = false;
       }
     });
   }
