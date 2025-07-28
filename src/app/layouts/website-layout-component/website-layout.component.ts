@@ -1,6 +1,7 @@
 import {Component, signal} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {NavigationStart, Router, RouterEvent, RouterLink, RouterOutlet} from '@angular/router';
 import {NgClass} from '@angular/common';
+import {filter} from 'rxjs';
 
 @Component({
   selector: 'app-public-layout-component',
@@ -14,6 +15,14 @@ import {NgClass} from '@angular/common';
 })
 export class WebsiteLayoutComponent {
   public isOpen: boolean = false;
+
+  constructor(public router: Router) {
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.isOpen = false;
+      }
+    });
+  }
 
   toggleMobileMenu() {
     this.isOpen = !this.isOpen;
