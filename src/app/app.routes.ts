@@ -4,6 +4,8 @@ import {HomeComponent} from './website/home-component/home-component';
 import {ContactComponent} from './website/contact-component/contact-component';
 import {AboutComponent} from './website/about-component/about-component';
 import {CmsLayoutComponent} from './layouts/cms-layout-component/cms-layout.component';
+import {UserProfileComponent} from './cms/user-profile-component/user-profile-component';
+import {DashboardComponent} from './cms/dashboard-component/dashboard-component';
 
 export const routes: Routes = [
   {
@@ -19,7 +21,8 @@ export const routes: Routes = [
     path: 'app',
     component: CmsLayoutComponent,
     children: [
-      // { path: '', component: DashboardComponent }
+      { path: '', component: DashboardComponent },
+      { path: 'user-profile', component: UserProfileComponent }
     ]
   }
 ];
