@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {AuthService} from '@auth0/auth0-angular';
 import {AsyncPipe} from '@angular/common';
+import {LoadingComponent} from '../loading-component/loading-component';
 
 @Component({
   selector: 'app-user-profile-component',
   imports: [
-    AsyncPipe
+    AsyncPipe,
+    LoadingComponent,
   ],
   templateUrl: './user-profile-component.html',
   styleUrl: './user-profile-component.css'
