@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterLink} from '@angular/router';
+import {AuthService} from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-home-component',
@@ -10,5 +11,7 @@ import {RouterLink} from '@angular/router';
   styleUrl: './home-component.css'
 })
 export class HomeComponent {
+  constructor(public auth: AuthService) {
+  }
 
 }

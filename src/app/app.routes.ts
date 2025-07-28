@@ -3,6 +3,7 @@ import {WebsiteLayoutComponent} from './layouts/website-layout-component/website
 import {HomeComponent} from './website/home-component/home-component';
 import {ContactComponent} from './website/contact-component/contact-component';
 import {AboutComponent} from './website/about-component/about-component';
+import {CmsLayoutComponent} from './layouts/cms-layout-component/cms-layout.component';
 
 export const routes: Routes = [
   {
@@ -12,6 +13,13 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
+    ]
+  },
+  {
+    path: 'app',
+    component: CmsLayoutComponent,
+    children: [
+      // { path: '', component: DashboardComponent }
     ]
   }
 ];
