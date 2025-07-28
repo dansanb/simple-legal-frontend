@@ -6,6 +6,7 @@ import {AboutComponent} from './website/about-component/about-component';
 import {CmsLayoutComponent} from './layouts/cms-layout-component/cms-layout.component';
 import {UserProfileComponent} from './cms/user-profile-component/user-profile-component';
 import {DashboardComponent} from './cms/dashboard-component/dashboard-component';
+import {AuthCallbackComponent} from './auth-callback-component/auth-callback-component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,10 @@ export const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
     ]
+  },
+  {
+    path: 'auth-callback',
+    component: AuthCallbackComponent
   },
   {
     path: 'app',

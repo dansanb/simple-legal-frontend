@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-ak0hr7ddglrgjsdi.us.auth0.com',
       clientId: 'Gp5FFyJsFS21xjpR08VuLXM6XlS6Dc3M',
       authorizationParams: {
-        redirect_uri: window.location.origin + "/app"
+        redirect_uri: window.location.origin + "/auth-callback"
       }
     }),
   ]

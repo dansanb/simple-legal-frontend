@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'loading-component',
@@ -10,5 +11,6 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
   styleUrl: './loading-component.css'
 })
 export class LoadingComponent {
+  @Input() message:string = 'Loading';
 
 }
