@@ -1,7 +1,6 @@
-import {Component, signal} from '@angular/core';
-import {NavigationStart, Router, RouterEvent, RouterLink, RouterOutlet} from '@angular/router';
+import {Component} from '@angular/core';
+import {NavigationStart, Router,  RouterLink, RouterOutlet} from '@angular/router';
 import {NgClass} from '@angular/common';
-import {filter} from 'rxjs';
 
 @Component({
   selector: 'app-public-layout-component',
