@@ -33,10 +33,12 @@
       <div [ngClass]="isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full'"
            class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white shadow-md lg:bg-transparent lg:dark:bg-transparent lg:shadow-none dark:bg-gray-900 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
         <a routerLink="/"
-           class="block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">Home</a>
+           class="website-topbar-link">Home</a>
         <a routerLink="/about"
-           class="block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">About</a>
-        <a routerLink="/contact" class="block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">Contact</a>
+           class="website-topbar-link">About</a>
+        <a routerLink="/contact"
+           class="website-topbar-link">Contact</a>
+        <login-button-component class="website-topbar-link">Login</login-button-component>
       </div>
 
     </div>

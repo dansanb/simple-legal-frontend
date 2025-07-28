@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {AuthService} from '@auth0/auth0-angular';
 
 @Component({
@@ -8,6 +8,7 @@ import {AuthService} from '@auth0/auth0-angular';
   styleUrl: './login-button-component.css'
 })
 export class LoginButtonComponent {
+  @Input() class: string = '';
   constructor(public auth: AuthService) {
   }
 
