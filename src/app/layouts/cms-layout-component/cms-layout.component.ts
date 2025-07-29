@@ -3,6 +3,7 @@ import {AuthService} from '@auth0/auth0-angular';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {AsyncPipe, SlicePipe} from '@angular/common';
 import {Title} from '@angular/platform-browser';
+import {LogoutButtonComponent} from '../../_common/logout-button-component/logout-button-component';
 
 @Component({
   selector: 'app-app-layout-component',
@@ -10,7 +11,8 @@ import {Title} from '@angular/platform-browser';
     RouterOutlet,
     AsyncPipe,
     SlicePipe,
-    RouterLink
+    RouterLink,
+    LogoutButtonComponent
   ],
   templateUrl: './cms-layout.component.html',
   styleUrl: './cms-layout.component.css'

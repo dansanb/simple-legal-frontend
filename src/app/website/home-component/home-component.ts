@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {AuthService} from '@auth0/auth0-angular';
-import {LoginButtonComponent} from '../login-button-component/login-button-component';
+import {LoginButtonComponent} from '../../_common/login-button-component/login-button-component';
 
 @Component({
   selector: 'app-home-component',

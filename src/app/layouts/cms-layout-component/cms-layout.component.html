@@ -129,31 +129,28 @@
         <div class="space-y-3 ">
           <label class="px-3 text-xs text-gray-500 uppercase dark:text-gray-400">User</label>
 
-          <a
-            class="cms-sidebar-link"
-            routerLink="user-profile" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-5 h-5">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="10" r="3"/>
-              <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
-            </svg>
+          @if (auth.user$ | async; as user) {
+            <a
+              class="cms-sidebar-link"
+              routerLink="user-profile" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="w-5 h-5">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="10" r="3"/>
+                <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+              </svg>
 
-            @if (auth.user$ | async; as user) {
               <span class="mx-2 text-sm font-medium">Hello, {{ user.name | slice:0:10 }}</span>
-            }
-          </a>
+            </a>
+          }
 
-          <a
-            (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })"
-            class="cms-sidebar-link"
-            href="#">
+          <logout-button-component class="cms-sidebar-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 -960 960 960">
               <path
                 d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200z"/>
             </svg>
             <span class="mx-2 text-sm font-medium">Logout</span>
-          </a>
+          </logout-button-component>
         </div>
 
       </nav>
