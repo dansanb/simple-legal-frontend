@@ -13,21 +13,18 @@ export const routes: Routes = [
     path: '',
     component: WebsiteLayoutComponent,
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'about', component: AboutComponent },
-      { path: 'contact', component: ContactComponent },
+      { path: '', component: HomeComponent, title: 'Simple Legal | Home' },
+      { path: 'about', component: AboutComponent , title: 'Simple Legal | About'},
+      { path: 'contact', component: ContactComponent, title: 'Simple Legal | Contact' },
     ]
   },
-  {
-    path: 'auth-callback',
-    component: AuthCallbackComponent
-  },
+  { path: 'auth-callback', component: AuthCallbackComponent, title: 'Simple Legal | Loging you in...'},
   {
     path: 'app',
     component: CmsLayoutComponent,
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'user-profile', component: UserProfileComponent }
+      { path: '', component: DashboardComponent, title: 'Dashboard' },
+      { path: 'user-profile', component: UserProfileComponent, title: 'User Profile' }
     ]
   }
 ];

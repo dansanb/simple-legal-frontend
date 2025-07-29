@@ -131,7 +131,7 @@
 
           <a
             class="cms-sidebar-link"
-            routerLink="user-profile" href="#" >
+            routerLink="user-profile" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-5 h-5">
               <circle cx="12" cy="12" r="10"/>
@@ -140,7 +140,7 @@
             </svg>
 
             @if (auth.user$ | async; as user) {
-              <span class="mx-2 text-sm font-medium">Hello, {{ user.name | slice:0:10  }}</span>
+              <span class="mx-2 text-sm font-medium">Hello, {{ user.name | slice:0:10 }}</span>
             }
           </a>
 
@@ -160,6 +160,11 @@
     </div>
   </aside>
   <div class="flex grow h-screen px-5 py-8 overflow-auto">
-    <router-outlet></router-outlet>
+    <div>
+      <h2 class="page-header">{{ this.titleService.getTitle() }}</h2>
+      <div class="page-content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
 </div>

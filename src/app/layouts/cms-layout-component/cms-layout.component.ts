@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from '@auth0/auth0-angular';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {AsyncPipe, SlicePipe} from '@angular/common';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-app-layout-component',
@@ -16,7 +17,8 @@ import {AsyncPipe, SlicePipe} from '@angular/common';
 })
 export class CmsLayoutComponent {
   protected readonly document = document;
-  constructor(public auth: AuthService) {
+
+  constructor(public auth: AuthService, public titleService: Title) {
 
   }
 

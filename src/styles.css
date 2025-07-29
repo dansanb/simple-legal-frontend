@@ -5,21 +5,29 @@
   @apply text-2xl font-bold;
 }
 
-.page-container {
+.page-content-container {
   @apply pt-10;
 }
 
 .cms-sidebar-link {
-  @apply flex items-center px-3 py-2 text-gray-600
-  transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100
-  dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700
+  @apply flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform;
+  @apply rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200;
+  @apply hover:text-gray-700;
 }
 
 .website-topbar-link {
-  @apply block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2
+  @apply block px-3 py-2 text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2;
+  cursor: pointer;
 }
 
-.website-home-login-link {
-  @apply block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300
-  transform bg-gray-900 rounded-md hover:bg-gray-700
+.hero-login-button {
+  @apply block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300;
+  @apply transform bg-orange-600 rounded-md hover:bg-gray-700;
+  cursor: pointer;
+}
+
+.hero-learn-more-button {
+  @apply block px-5 py-2 text-sm font-medium tracking-wider text-center text-gray-700 transition-colors duration-300;
+  @apply transform bg-gray-200 rounded-md lg:mx-4 hover:bg-gray-300 max-lg:mt-3;
+  cursor: pointer;
 }
