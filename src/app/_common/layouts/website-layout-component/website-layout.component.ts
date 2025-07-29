@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavigationStart, Router,  RouterLink, RouterOutlet} from '@angular/router';
 import {NgClass} from '@angular/common';
-import {LoginButtonComponent} from '../../_common/login-button-component/login-button-component';
+import {LoginButtonComponent} from '../../login-button-component/login-button-component';
 
 @Component({
   selector: 'app-public-layout-component',

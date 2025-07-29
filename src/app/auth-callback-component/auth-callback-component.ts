@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {LoadingComponent} from '../cms/loading-component/loading-component';
+import {LoadingComponent} from '../_common/loading-component/loading-component';
 import {AuthService} from '@auth0/auth0-angular';
 
 @Component({
