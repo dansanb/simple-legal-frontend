@@ -7,6 +7,7 @@ import {CmsLayoutComponent} from './layouts/cms-layout-component/cms-layout.comp
 import {UserProfileComponent} from './cms/user-profile-component/user-profile-component';
 import {DashboardComponent} from './cms/dashboard-component/dashboard-component';
 import {AuthCallbackComponent} from './auth-callback-component/auth-callback-component';
+import {AuthGuard} from '@auth0/auth0-angular';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
   {
     path: 'app',
     component: CmsLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardComponent, title: 'Dashboard' },
       { path: 'user-profile', component: UserProfileComponent, title: 'User Profile' }
