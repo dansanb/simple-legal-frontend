@@ -14,6 +14,7 @@
 
               <a
                 class="cms-sidebar-link"
+                routerLink='//'
                 href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-5 h-5">
@@ -30,7 +31,6 @@
 
               <a
                 class="cms-sidebar-link"
-                routerLink="cases"
                 href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-5 h-5">
@@ -88,6 +88,7 @@
 
               <a
                 class="cms-sidebar-link"
+                routerLink="status-roles"
                 href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code"
                      viewBox="0 0 16 16">
@@ -159,12 +160,10 @@
           </nav>
         </div>
       </aside>
-      <div class="flex grow h-screen px-5 py-8 overflow-auto">
-        <div>
-          <h2 class="page-header">{{ this.titleService.getTitle() }}</h2>
-          <div class="page-content-container">
-            <router-outlet></router-outlet>
-          </div>
+      <div class="flex flex-col gap-4 grow h-screen px-5 py-8 overflow-auto">
+        <h2 class="text-2xl font-bold">{{ this.titleService.getTitle() }}</h2>
+        <div class="outline-1 h-screen pt-10">
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>

@@ -28,7 +28,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent, title: 'Dashboard' },
       { path: 'user-profile', component: UserProfileComponent, title: 'User Profile' },
-      { path: 'status-roles', component: StatusRolesComponent, title: 'Status Roles' }
+      { path: 'status-roles', component: StatusRolesComponent, title: 'Status Codes' }
     ]
   }
 ];

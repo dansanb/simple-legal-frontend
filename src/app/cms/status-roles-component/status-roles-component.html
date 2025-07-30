@@ -1,107 +1,13 @@
-<div class="w-full grow">
-  <ag-grid-angular
-    class="h-full ag-theme-alpine"
-    (rowDoubleClicked)="gridRowDoubleClicked($event)"
-    (paginationChanged)="gridPaginationChanged()"
-    (firstDataRendered)="gridFirstDataRendered()"
-    (auxclick)="gridAuxClickEvent()"
-    (filterChanged)="gridFilterChanged($event)"
-  >
-  </ag-grid-angular>
-</div>
-
-<div class="h-22 p-4">
-  <div class="flex flex-row">
-
-    <div class="w-1/3">
-      <div class="flex flex-row space-x-2">
-        <button mat-mini-fab
-                [disabled]="CheckCanUseButtons()"
-                matTooltip="Clear All Filters"
-                color="primary" (click)="clearFiltersButtonClick()">
-          <mat-icon svgIcon="data-filter-off"></mat-icon>
-          &nbsp;
-        </button>
-        <!--        <button mat-mini-fab-->
-        <!--                [disabled]="CheckCanUseButtons()"-->
-        <!--                matTooltip="Report Filters"-->
-        <!--                color="primary" (click)="filterOptionsButtonClick()">-->
-        <!--          <mat-icon svgIcon="data-filter"></mat-icon>-->
-        <!--        </button>-->
-        <!--        <button mat-mini-fab-->
-        <!--                [disabled]="CheckCanUseButtons()"-->
-        <!--                matTooltip="Show/Hide Columns"-->
-        <!--                color="primary" (click)="columnsOptionsButtonClick()">-->
-        <!--          <mat-icon>view_week</mat-icon>-->
-        <!--        </button>-->
-        <div class="pl-2 pt-2">
-          <!--          <mat-slide-toggle #archive-->
-          <!--                            [disabled]="CheckCanUseButtons()"-->
-          <!--                            color="primary"-->
-          <!--                            [checked]="this.uiFlags.archives"-->
-          <!--                            (change)="onArchivesToggleChange(archive.checked)">-->
-          <!--            Archives-->
-          <!--          </mat-slide-toggle>-->
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="w-1/3">
-      <div class="text-center">
-        @if (uiFlags.fetchingRows) {
-          <div class="spinner-wrapper">
-            <loading-component message="Loading records..."></loading-component>
-            <!--            <span>Fetching records...</span>-->
-            <!--            <mat-spinner [diameter]="20"></mat-spinner>-->
-          </div>
-        }
-        @if (!uiFlags.fetchingRows && gridStatsHelper.ready) {
-          <div>
-            @switch (gridStatsHelper.rowCount) {
-              @case (0) {
-                <div>
-                  No records found.
-                </div>
-              }
-              @default {
-                <div>
-                  @if (gridStatsHelper.isLastRowKnown) {
-                    {{ gridStatsHelper.rowCount }} records
-                  } @else {
-                    {{ gridStatsHelper.rowCount }}+ records
-                  }
-                </div>
-              }
-            }
-
-            <div *ngIf="uiFlags.filterPresetLoaded">
-              <!--            <span class="active-filter">* {{ currentFilterPreset.name }} Report Filter</span>-->
-            </div>
-          </div>
-        }
-
-      </div>
-    </div>
-
-    <div class="w-1/3">
-      <div class="flex flex-row-reverse space-x-reverse  space-x-2">
-        <button mat-mini-fab
-                [disabled]="CheckCanUseButtons()"
-                matTooltip="Download CSV  File"
-                color="primary" (click)="downloadCSVButtonClick()">
-          <mat-icon>cloud_download</mat-icon>
-        </button>
-        <button mat-mini-fab
-                [disabled]="CheckCanUseButtons()"
-                matTooltip="Email CSV File"
-                [class.spinner-effect]="uiFlags.sendingEmail"
-                color="primary">
-          <mat-icon> email</mat-icon>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<ag-grid-angular
+  style="width: 100%; height: 100%"
+  (gridReady)="onGridReady($event)"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [rowModelType]="rowModelType"
+  (rowDoubleClicked)="gridRowDoubleClicked($event)"
+  (paginationChanged)="gridPaginationChanged()"
+  (firstDataRendered)="gridFirstDataRendered()"
+  (auxclick)="gridAuxClickEvent()"
+  (filterChanged)="gridFilterChanged($event)"
+>
+</ag-grid-angular>

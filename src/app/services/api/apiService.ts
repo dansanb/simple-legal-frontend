@@ -27,7 +27,7 @@ export class ApiService {
   }
 
 
-  getCaseEntityStatusRolesPages(params: any): Observable<CaseEntityStatusRoleDto[]> {
+  getStatusCodesPaged(params?: any): Observable<CaseEntityStatusRoleDto[]> {
     const url = new URL('paged', this.BASE_URL_STATUS_ROLES).href;
     return this.http.post<CaseEntityStatusRoleDto[]>(url, params);
   }

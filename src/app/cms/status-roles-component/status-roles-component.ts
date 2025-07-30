@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {AgGridAngular} from 'ag-grid-angular';
 import type {
+  ColDef,
   RowDoubleClickedEvent,
   FilterChangedEvent,
   GridOptions,
-  GridApi,
   IDatasource,
-  IGetRowsParams
+  IGetRowsParams,
+  GridReadyEvent,
+  RowModelType,
 } from 'ag-grid-community';
 import {MatMiniFabButton} from '@angular/material/button';
 import {MatTooltip} from '@angular/material/tooltip';
@@ -15,6 +17,8 @@ import {LoadingComponent} from '../../_common/loading-component/loading-componen
 import {finalize} from 'rxjs';
 import {ApiService} from '../../services/api/apiService';
 import {CaseEntityStatusRoleDto} from '../../services/api/models/caseEntityStatusRoleDto';
+import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
+ModuleRegistry.registerModules([ AllCommunityModule ]);
 
 @Component({
   selector: 'app-status-roles-component',
@@ -28,18 +32,21 @@ export class StatusRolesComponent {
     fetchingRows: false,
   };
 
-  colDefs = [
-    {field: 'id'},
-    {field: 'name'},
+  columnDefs: ColDef[] = [
+    {field: 'caseRole.name', headerName: 'Case Role'},
+    {field: 'name', headerName: 'Status Code'},
     {field: 'dateCreated'},
     {field: 'dateUpdated'}
   ]
+  defaultColDef: ColDef = {
+    flex: 1,
+    minWidth: 100,
+    sortable: false,
+  };
+
 
   gridDataSource: IDatasource | undefined;
-  gridApi: GridApi | undefined;
-  caseSearchGridOptions: GridOptions = {
-    columnDefs: this.colDefs,
-  };
+  rowModelType:  RowModelType = 'infinite';
 
   // helps display correct information about data loaded and if any other data is yet to be
   // loaded from server.
@@ -53,19 +60,22 @@ export class StatusRolesComponent {
   }
 
   ngOnInit(): void {
-    this.fetchApiDataAndInitGrid();
   }
 
   fetchApiDataAndInitGrid() {
+    console.log('1');
     this.gridDataSource = {
       rowCount: undefined,
       getRows: (params: IGetRowsParams) => {
+        console.log('2');
         this.fetchNextRowBlock(params);
       }
     }
+
   }
 
   fetchNextRowBlock(params: IGetRowsParams) {
+    console.log('3');
     let queryParams: any = {
       closedCasesOnly: this.uiFlags.archives,
       startRow: params.startRow,
@@ -75,7 +85,7 @@ export class StatusRolesComponent {
     };
 
     this.uiFlags.fetchingRows = true;
-    this.apiService.getCaseEntityStatusRolesPages(queryParams)
+    this.apiService.getStatusCodesPaged(queryParams)
       .pipe(
         finalize(() => {
           this.uiFlags.fetchingRows = false;
@@ -134,5 +144,33 @@ export class StatusRolesComponent {
 
   downloadCSVButtonClick() {
 
+  }
+
+  onGridReady(params: GridReadyEvent<CaseEntityStatusRoleDto>) {
+    this.apiService.getStatusCodesPaged()
+      .subscribe((data) => {
+        const dataSource: IDatasource = {
+          rowCount: undefined,
+          getRows: (params: IGetRowsParams) => {
+            console.log(
+              "asking for " + params.startRow + " to " + params.endRow,
+            );
+            this.apiService.getStatusCodesPaged(params)
+              .subscribe((data) => {
+                console.log(data[0].caseRole);
+                // if on or after the last page, work out the last row.
+                let lastRow = -1;
+                if (data.length <= params.endRow) {
+                  lastRow = data.length;
+                }
+                // call the success callback
+                params.successCallback(data, lastRow);
+
+              });
+          },
+        };
+        console.log('datasource set');
+        params.api!.setGridOption("datasource", dataSource);
+      });
   }
 }
