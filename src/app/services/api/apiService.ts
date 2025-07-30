@@ -31,4 +31,9 @@ export class ApiService {
     const url = new URL('paged', this.BASE_URL_STATUS_ROLES).href;
     return this.http.post<CaseEntityStatusRoleDto[]>(url, params);
   }
+
+  deleteStatusCode(id:string) {
+    const url = new URL(id, this.BASE_URL_STATUS_ROLES).href;
+    return this.http.delete<any>(url);
+  }
 }

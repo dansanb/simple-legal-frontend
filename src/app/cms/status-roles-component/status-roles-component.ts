@@ -86,13 +86,31 @@ export class StatusRolesComponent {
     this.gridApi.exportDataAsCsv({fileName: 'status-roles-data.csv'})
   }
   handleDelete() {
+    // get selected row
+    const rows = this.gridApi.getSelectedRows();
+
+    if (rows.length == 0)
+      return;
+
+    const row = rows[0];
+    const message = `Delete '${row.caseRole.name}:${row.name}' ?`;
+
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: {message: 'Delete r u sure lulz'}
+      data: { message: message }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
-        console.log('DO IT...');
+        const observable = this.apiService.deleteStatusCode(row.id);
+
+        observable.subscribe({
+          error: err => {
+            console.log(err);
+          }, complete: () => {
+            this.gridApi.purgeInfiniteCache();
+            this.gridApi.deselectAll();
+          }
+        });
       }
     });
   }
