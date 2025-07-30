@@ -8,7 +8,7 @@ import {UserProfileComponent} from './cms/user-profile-component/user-profile-co
 import {DashboardComponent} from './cms/dashboard-component/dashboard-component';
 import {AuthCallbackComponent} from './auth-callback-component/auth-callback-component';
 import {AuthGuard} from '@auth0/auth0-angular';
-import {CasesComponent} from './cms/cases-component/cases-component';
+import {StatusRolesComponent} from './cms/status-roles-component/status-roles-component';
 
 export const routes: Routes = [
   {
@@ -20,7 +20,7 @@ export const routes: Routes = [
       { path: 'contact', component: ContactComponent, title: 'Simple Legal | Contact' },
     ]
   },
-  { path: 'auth-callback', component: AuthCallbackComponent, title: 'Simple Legal | Loging you in...'},
+  { path: 'auth-callback', component: AuthCallbackComponent, title: 'Simple Legal | Logging you in...'},
   {
     path: 'app',
     component: CmsLayoutComponent,
@@ -28,7 +28,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent, title: 'Dashboard' },
       { path: 'user-profile', component: UserProfileComponent, title: 'User Profile' },
-      { path: 'cases', component: CasesComponent, title: 'Cases' }
+      { path: 'status-roles', component: StatusRolesComponent, title: 'Status Roles' }
     ]
   }
 ];
