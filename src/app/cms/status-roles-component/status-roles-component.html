@@ -14,17 +14,17 @@
   <div class="flex justify-between gap-5">
     <div>
       <div class="flex flex-row gap-5">
-        <mat-miniFab-icon-button icon="add" toolTip="Create New Status Code"/>
-        <mat-miniFab-icon-button icon="edit" toolTip="Edit Status Code"/>
-        <mat-miniFab-icon-button color="warning" icon="delete" toolTip="Delete Status Code"/>
+        <action-button icon="add" toolTip="Create New Status Code"/>
+        <action-button icon="edit" toolTip="Edit Status Code" (click)="onEditClick()"/>
+        <action-button color="warning" icon="delete" toolTip="Delete Status Code" (click)="handleDelete()"/>
       </div>
     </div>
     <div class="">
       <div class="flex flex-row gap-5">
-        <mat-miniFab-icon-button icon="filter_list_off" toolTip="Clear All Filters"
-                                 (buttonClick)="clearFilters()"/>
-        <mat-miniFab-icon-button icon="download" toolTip="Download CSV File"
-                                 (buttonClick)="downloadCSV()"/>
+        <action-button icon="filter_list_off" toolTip="Clear All Filters"
+                                 (click)="clearFilters()"/>
+        <action-button icon="download" toolTip="Download CSV File"
+                                 (click)="downloadCSV()"/>
       </div>
     </div>
   </div>

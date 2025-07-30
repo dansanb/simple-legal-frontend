@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ColorMatMiniFabIconButtonComponent } from './color-mat-mini-fab-icon-button-component';
+import { ActionButtonComponent } from './action-button-component';
 
 describe('ColorMatMiniFabButtonComponent', () => {
-  let component: ColorMatMiniFabIconButtonComponent;
-  let fixture: ComponentFixture<ColorMatMiniFabIconButtonComponent>;
+  let component: ActionButtonComponent;
+  let fixture: ComponentFixture<ActionButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ColorMatMiniFabIconButtonComponent]
+      imports: [ActionButtonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ColorMatMiniFabIconButtonComponent);
+    fixture = TestBed.createComponent(ActionButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,7 +1,7 @@
 <button matMiniFab
         [matTooltip]="toolTip"
         class="{{ color }}"
-        (click)="onClick()"
+        (click)="onClick($event)"
         [disabled]="disabled">
   <mat-icon>{{ icon }}</mat-icon>
 </button>

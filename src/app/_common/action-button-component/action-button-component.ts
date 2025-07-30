@@ -4,25 +4,27 @@ import {MatIcon} from '@angular/material/icon';
 import {MatTooltip} from '@angular/material/tooltip';
 
 @Component({
-  selector: 'mat-miniFab-icon-button',
+  selector: 'action-button',
   imports: [
     MatIcon,
     MatMiniFabButton,
     MatTooltip
   ],
-  templateUrl: './color-mat-mini-fab-icon-button-component.html',
-  styleUrl: './color-mat-mini-fab-icon-button-component.css'
+  templateUrl: './action-button-component.html',
+  styleUrl: './action-button-component.css'
 })
-export class ColorMatMiniFabIconButtonComponent {
+export class ActionButtonComponent {
   @Input() color: string = "";
   @Input() icon: string = "home";
   @Input() toolTip: string = "";
-  @Input() disabled:boolean = false;
-  @Output() buttonClick = new EventEmitter<void>();
+  @Input() disabled: boolean = false;
+  @Output() click = new EventEmitter<void>();
 
-  onClick() {
+  onClick(event: Event) {
+    // prevent multiple 'click' events to fire
+    event.stopPropagation();
     if (!this.disabled) {
-      this.buttonClick.emit();
+      this.click.emit();
     }
 
   }

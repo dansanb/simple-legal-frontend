@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {AgGridAngular} from 'ag-grid-angular';
 import type {
   GridApi,
@@ -13,19 +13,22 @@ import {ApiService} from '../../services/api/apiService';
 import {CaseEntityStatusRoleDto} from '../../services/api/models/caseEntityStatusRoleDto';
 import {ModuleRegistry, AllCommunityModule} from 'ag-grid-community';
 import {
-  ColorMatMiniFabIconButtonComponent
-} from '../../_common/color-mat-mini-fab-icon-button-component/color-mat-mini-fab-icon-button-component';
+  ActionButtonComponent
+} from '../../_common/action-button-component/action-button-component';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../../_common/confirm-dialog-component/confirm-dialog-component';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 @Component({
   selector: 'app-status-roles-component',
-  imports: [AgGridAngular, ColorMatMiniFabIconButtonComponent],
+  imports: [AgGridAngular, ActionButtonComponent],
   templateUrl: './status-roles-component.html',
   styleUrl: './status-roles-component.css'
 })
 export class StatusRolesComponent {
   private gridApi!: GridApi<CaseEntityStatusRoleDto>;
+  readonly dialog = inject(MatDialog);
 
   clearFilters() {
     this.gridApi.setFilterModel(null);
@@ -61,7 +64,6 @@ export class StatusRolesComponent {
           getRows: (params: IGetRowsParams) => {
             this.apiService.getStatusCodesPaged(params)
               .subscribe((data) => {
-                console.log(data);
                 // if on or after the last page, work out the last row.
                 let lastRow = -1;
                 if (data.length <= params.endRow) {
@@ -82,5 +84,20 @@ export class StatusRolesComponent {
 
   downloadCSV() {
     this.gridApi.exportDataAsCsv({fileName: 'status-roles-data.csv'})
+  }
+  handleDelete() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {message: 'Delete r u sure lulz'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
+        console.log('DO IT...');
+      }
+    });
+  }
+
+  onEditClick() {
+
   }
 }
