@@ -1,9 +1,10 @@
 <ag-grid-angular
-  style="width: 100%; height: 100%"
+  class="p-0 m-0 w-full h-full"
   (gridReady)="onGridReady($event)"
   [columnDefs]="columnDefs"
   [defaultColDef]="defaultColDef"
   [rowModelType]="rowModelType"
+  rowSelection="single"
   (rowDoubleClicked)="gridRowDoubleClicked($event)"
   (paginationChanged)="gridPaginationChanged()"
   (firstDataRendered)="gridFirstDataRendered()"

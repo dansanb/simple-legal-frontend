@@ -35,13 +35,15 @@ export class StatusRolesComponent {
   columnDefs: ColDef[] = [
     {field: 'caseRole.name', headerName: 'Case Role'},
     {field: 'name', headerName: 'Status Code'},
-    {field: 'dateCreated'},
-    {field: 'dateUpdated'}
+    {field: 'dateCreated', filter: false, floatingFilter: false}
   ]
   defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
-    sortable: false,
+    resizable: true,
+    sortable: true,
+    filter: true,
+    floatingFilter: true,
   };
 
 
