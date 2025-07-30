@@ -2,14 +2,12 @@ import { Component } from '@angular/core';
 import {AuthService} from '@auth0/auth0-angular';
 import {AsyncPipe} from '@angular/common';
 import {LoadingComponent} from '../../_common/loading-component/loading-component';
-import {LogoutButtonComponent} from '../../_common/logout-button-component/logout-button-component';
 
 @Component({
   selector: 'app-user-profile-component',
   imports: [
     AsyncPipe,
     LoadingComponent,
-    LogoutButtonComponent,
   ],
   templateUrl: './user-profile-component.html',
   styleUrl: './user-profile-component.css'

@@ -1,14 +1,31 @@
-<ag-grid-angular
-  class="p-0 m-0 w-full h-full"
-  (gridReady)="onGridReady($event)"
-  [columnDefs]="columnDefs"
-  [defaultColDef]="defaultColDef"
-  [rowModelType]="rowModelType"
-  rowSelection="single"
-  (rowDoubleClicked)="gridRowDoubleClicked($event)"
-  (paginationChanged)="gridPaginationChanged()"
-  (firstDataRendered)="gridFirstDataRendered()"
-  (auxclick)="gridAuxClickEvent()"
-  (filterChanged)="gridFilterChanged($event)"
->
-</ag-grid-angular>
+<div class="flex flex-col gap-10 h-full">
+  <div class="flex-1">
+    <ag-grid-angular
+      class="w-full h-full"
+      (gridReady)="onGridReady($event)"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowModelType]="rowModelType"
+      rowSelection="single"
+      (rowDoubleClicked)="gridRowDoubleClicked($event)"
+      >
+    </ag-grid-angular>
+  </div>
+  <div class="flex justify-between gap-5">
+    <div>
+      <div class="flex flex-row gap-5">
+        <mat-miniFab-icon-button icon="add" toolTip="Create New Status Code"/>
+        <mat-miniFab-icon-button icon="edit" toolTip="Edit Status Code"/>
+        <mat-miniFab-icon-button color="warning" icon="delete" toolTip="Delete Status Code"/>
+      </div>
+    </div>
+    <div class="">
+      <div class="flex flex-row gap-5">
+        <mat-miniFab-icon-button icon="filter_list_off" toolTip="Clear All Filters"
+                                 (buttonClick)="clearFilters()"/>
+        <mat-miniFab-icon-button icon="download" toolTip="Download CSV File"
+                                 (buttonClick)="downloadCSV()"/>
+      </div>
+    </div>
+  </div>
+</div>
